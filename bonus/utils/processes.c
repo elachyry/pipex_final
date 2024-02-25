@@ -6,7 +6,7 @@
 /*   By: melachyr <melachyr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 23:36:13 by melachyr          #+#    #+#             */
-/*   Updated: 2024/02/24 21:10:34 by melachyr         ###   ########.fr       */
+/*   Updated: 2024/02/25 21:50:44 by melachyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,9 @@ int	wait_for_children(t_pipex pipex)
 	return (last_status);
 }
 
-void	child_process(t_pipex pipex, char **env, int index)
+void	child_process(t_pipex pipex, char **env, int index, char *cmd)
 {
+	get_cmd(&pipex, cmd, index);
 	if (index == 0)
 		first_cmd(pipex, index);
 	else if (index == pipex.cmd_count - 1)

@@ -6,7 +6,7 @@
 /*   By: melachyr <melachyr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 13:55:21 by melachyr          #+#    #+#             */
-/*   Updated: 2024/02/24 21:09:52 by melachyr         ###   ########.fr       */
+/*   Updated: 2024/02/25 21:51:21 by melachyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	command_not_found(char *cmd, int exit_val);
 
 //utils
 int		wait_for_children(t_pipex pipex);
-void	child_process(t_pipex pipex, char **env, int index);
+void	child_process(t_pipex pipex, char **env, int index, char *cmd);
 void	parent_process(t_pipex pipex, int *index);
 void	create_pipes(t_pipex *pipex);
 void	close_pipes(t_pipex *pipex);

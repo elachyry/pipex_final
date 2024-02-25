@@ -6,7 +6,7 @@
 /*   By: melachyr <melachyr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 15:28:17 by melachyr          #+#    #+#             */
-/*   Updated: 2024/02/24 21:10:12 by melachyr         ###   ########.fr       */
+/*   Updated: 2024/02/25 21:54:34 by melachyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ int	start_program(t_pipex pipex, char **env, char **argv)
 		pipex.pid[i] = fork();
 		if (pipex.pid[i] == -1)
 			command_error("fork", 1);
-		get_cmd(&pipex, argv[i], i);
+		// get_cmd(&pipex, argv[i], i);
 		if (pipex.pid[i] == 0)
-			child_process(pipex, env, i);
+			child_process(pipex, env, i, argv[i]);
 		else
 			parent_process(pipex, &i);
-		free_table(pipex.cmd);
+		// free_table(pipex.cmd);
 	}
 	return_status = wait_for_children(pipex);
 	close_pipes(&pipex);

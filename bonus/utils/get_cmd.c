@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_in_cmd.c                                       :+:      :+:    :+:   */
+/*   get_cmd.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: melachyr <melachyr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 20:01:36 by melachyr          #+#    #+#             */
-/*   Updated: 2024/02/20 23:26:12 by melachyr         ###   ########.fr       */
+/*   Updated: 2024/02/25 21:46:21 by melachyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	check_empty_cmd(t_pipex *pipex, char *incmd, int i)
 	else if (!arglen(incmd) && i == pipex->cmd_count - 2)
 		exit(0);
 	else if (!arglen(incmd))
-		exit(258);
+		exit(1);
 }
 
 void	get_cmd(t_pipex *pipex, char *incmd, int i)
