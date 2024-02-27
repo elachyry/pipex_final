@@ -6,7 +6,7 @@
 /*   By: melachyr <melachyr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 13:55:21 by melachyr          #+#    #+#             */
-/*   Updated: 2024/02/25 21:51:21 by melachyr         ###   ########.fr       */
+/*   Updated: 2024/02/26 03:00:19 by melachyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_pipex
 //libft
 size_t	ft_strlen(const char *str);
 char	*ft_strdup(const char *s1);
+int		ft_isalpha(int c);
 void	ft_putstr_fd(char *s, int fd);
 char	*ft_strchr(const char *str, int c);
 char	*ft_strrchr(const char *str, int c);

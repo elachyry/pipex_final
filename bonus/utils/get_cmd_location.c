@@ -6,7 +6,7 @@
 /*   By: melachyr <melachyr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 19:51:16 by melachyr          #+#    #+#             */
-/*   Updated: 2024/02/25 21:42:43 by melachyr         ###   ########.fr       */
+/*   Updated: 2024/02/25 22:02:54 by melachyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,11 @@ int	get_cmd_location(t_pipex *pipex)
 {
 	char	*cmd;
 
-	printf("test1\n");
 	if (pipex->cmd[0] == NULL)
 		exit(0);
 	cmd = ft_strrchr(pipex->cmd[0], '/');
 	if (cmd != NULL)
 	{
-		printf("test2\n");
 		if (access(pipex->cmd[0], R_OK) != -1)
 		{
 			pipex->cmd_loc = pipex->cmd[0];

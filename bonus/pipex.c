@@ -6,7 +6,7 @@
 /*   By: melachyr <melachyr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 15:28:17 by melachyr          #+#    #+#             */
-/*   Updated: 2024/02/25 21:54:34 by melachyr         ###   ########.fr       */
+/*   Updated: 2024/02/27 01:38:20 by melachyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	write_here_doc(t_pipex pipex)
 	char	*str;
 	int		infile;
 
+	str = NULL;
 	infile = open(pipex.in_file_path, O_CREAT | O_RDWR, 0644);
 	write(1, "> ", 2);
 	while (1)
@@ -55,7 +56,7 @@ void	write_here_doc(t_pipex pipex)
 				break ;
 			}
 			write(1, "> ", 2);
-			write(infile, str, strlen(str));
+			write(infile, str, ft_strlen(str));
 			free(str);
 		}
 	}

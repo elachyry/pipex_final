@@ -6,7 +6,7 @@
 /*   By: melachyr <melachyr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:22:35 by melachyr          #+#    #+#             */
-/*   Updated: 2024/02/24 21:32:48 by melachyr         ###   ########.fr       */
+/*   Updated: 2024/02/27 01:37:49 by melachyr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,41 @@ void	get_path(t_pipex *pipex, char **env)
 		pipex->env = ft_split("  ", ':');
 }
 
+char	*get_here_doc_name()
+{
+	char	*name;
+	char	line[2];
+	int		fd;
+	int		c;
+	
+	name = malloc(sizeof(char) * 11);
+	if (name == NULL)
+		return (NULL);
+	fd = open("/dev/random", O_RDONLY);
+	if (fd == -1)
+	{
+		free(name);
+		return (NULL);
+	}
+	c = 0;
+	while (c < 11)
+	{
+		read(fd, line, 1);
+		if (ft_isalpha(line[0]))
+		{
+			name[c] = line[0];
+			c++;
+		}
+	}
+	name[c] = '\0';
+	close(fd);
+	return (name);
+}
+
 void	get_infile_outfile(t_pipex *pipex, char **argv)
 {
-	int	i;
+	int		i;
+	char	*name;
 
 	i = 1;
 	while (argv[i] != NULL)
@@ -44,7 +76,11 @@ void	get_infile_outfile(t_pipex *pipex, char **argv)
 		if (i == 1)
 		{
 			if (pipex->is_here_doc)
-				pipex->in_file_path = ft_strjoin(".", argv[i], 0);
+			{
+				name = get_here_doc_name();
+				pipex->in_file_path = ft_strjoin("/tmp/", name, 0);
+				free(name);
+			}
 			else
 				pipex->in_file_path = argv[i];
 		}
@@ -78,15 +114,3 @@ void	init_vars(t_pipex *pipex, char **argv, char argc, char **env)
 		return ;
 	get_infile_outfile(pipex, argv);
 }
-// int i = 0;
-// 	while (pipex->in_cmd[i] != NULL)
-// 	{
-// 		printf("%s\n", pipex->in_cmd[i]);
-// 		i++;
-// 	}
-// 	i = 0;
-// 	while (pipex->out_cmd[i] != NULL)
-// 	{
-// 		printf("%s\n", pipex->out_cmd[i]);
-// 		i++;
-// 	}

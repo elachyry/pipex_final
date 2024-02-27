@@ -6,7 +6,7 @@
 #    By: melachyr <melachyr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/05 14:39:33 by melachyr          #+#    #+#              #
-#    Updated: 2024/02/23 16:10:58 by melachyr         ###   ########.fr        #
+#    Updated: 2024/02/27 01:36:53 by melachyr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SRCS = mandatory/libft/ft_split.c mandatory/libft/ft_split_2.c mandatory/libft/f
 	   mandatory/exceptions/exceptions.c mandatory/in_cmd/get_in_cmd_location.c mandatory/in_cmd/get_in_cmd.c mandatory/out_cmd/get_out_cmd_location.c\
 	   mandatory/out_cmd/get_out_cmd.c mandatory/in_cmd/in_cmd_process.c mandatory/out_cmd/out_cmd_process.c\
 	   mandatory/pipex.c mandatory/init_vars.c
-SRCSB = bonus/libft/ft_split.c bonus/libft/ft_split_2.c bonus/libft/ft_strlen.c bonus/libft/ft_strdup.c bonus/libft/ft_substr.c bonus/libft/ft_strcmp.c\
+SRCSB = bonus/libft/ft_split.c bonus/libft/ft_isalpha.c bonus/libft/ft_split_2.c bonus/libft/ft_strlen.c bonus/libft/ft_strdup.c bonus/libft/ft_substr.c bonus/libft/ft_strcmp.c\
 	   bonus/libft/ft_strjoin.c bonus/libft/ft_strncmp.c bonus/libft/ft_strchr.c bonus/libft/ft_strrchr.c bonus/libft/ft_putstr_fd.c\
 	   bonus/exceptions/exceptions.c bonus/utils/get_cmd_location.c bonus/utils/get_cmd.c bonus/utils/processes.c bonus/utils/pipes.c bonus/utils/cmds.c\
 	   bonus/get_next_line/get_next_line.c bonus/get_next_line/get_next_line_utils.c\
@@ -33,10 +33,10 @@ OBJSB = $(SRCSB:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS) #-fsanitize=address -g3
-	$(CC) -fsanitize=address -g3 -fsanitize=address -g3 $(CFLAGS) $(OBJS) -o $@
+	$(CC) $(CFLAGS) $(OBJS) -o $@
 
 bonus: $(OBJSB) #-fsanitize=address -g3
-	$(CC) -fsanitize=address -g3 $(CFLAGS) $(OBJSB) -o $(NAME)
+	$(CC)  $(CFLAGS) $(OBJSB) -o $(NAME)
 
 clean:
 	rm -f $(OBJS) $(OBJSB)
